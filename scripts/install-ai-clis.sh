@@ -67,8 +67,20 @@ run() {
   fi
 }
 
+load_nvm_node() {
+  command -v npm >/dev/null 2>&1 && return
+
+  local nvm_dir="${NVM_DIR:-$HOME/.nvm}"
+  if [[ -s "$nvm_dir/nvm.sh" ]]; then
+    export NVM_DIR="$nvm_dir"
+    # shellcheck source=/dev/null
+    . "$NVM_DIR/nvm.sh"
+  fi
+}
+
 install_npm_cli() {
   local name="$1" package="$2"
+  load_nvm_node
   command -v npm >/dev/null 2>&1 || die "npm is required for $name. Run install-node-latest.sh --lts first."
   log "Installing/updating $name"
   run npm install --global "$package"
