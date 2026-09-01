@@ -13,3 +13,4 @@ sudo apt update && sudo apt upgrade -y
 "$SCRIPT_DIR/install-ai-tools.sh"
 "$SCRIPT_DIR/install-jetbrains-toolbox.sh"
 "$SCRIPT_DIR/sync-catppuccin-walls.sh"
+"$SCRIPT_DIR/install-cosmic-themes.sh" --dark
